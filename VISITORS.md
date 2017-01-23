@@ -8,13 +8,18 @@
 
 ## Visitors
 
-A visitor is a **function** assigned to a **key**. The **key** is named after the node being visited in CSS, and the **function** is run whenever that node is encountered.
+A visitor is a **callback** assigned to a **type**. The **type** is the name of the node being visited in CSS, and the **callback** is the function (or `enter` and `exit` functions) executed whenever that node is encountered.
 
 ```js
 postcssv([
 	{
-		decl: (node) => {
-			// do something with a declaration
+		rule: {
+			enter: (node, result) => {
+				// do something with a rule before its children are visited
+			},
+			exit: (node, result) => {
+				// do something with a rule after its children are visited
+			}
 		},
 		word: (node) => {
 			// do something with a word

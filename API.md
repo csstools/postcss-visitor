@@ -96,23 +96,36 @@ require('postcss')([
 
 ```
 {
-	[type]: callback
+	[type]: callback || { enter: callback, exit: callback }
 }
 ```
 
-A visitor is a **callback** assigned to a **type**. The **type** is the name of the node being visited in CSS, and the **callback** is the function whenever that node is encountered.
-
-You can read [VISITORS.md] to learn more about the nodes you can visit.
+A visitor is a **callback** assigned to a **type**. The **type** is the name of the node being visited in CSS, and the **callback** is the function (or `enter` and `exit` functions) executed whenever that node is encountered.
 
 ```js
 {
-	decl: (node, result) => {
-		// do something with a declaration
+	rule: (node, result) => {
+		// do something with a rule before its children are visited
+	}
+}
+```
+
+```js
+{
+	rule: {
+		enter: (node, result) => {
+			// do something with a rule before its children are visited
+		},
+		exit: (node, result) => {
+			// do something with a rule after its children are visited
+		}
 	}
 }
 ```
 
 When a visitor **callback** is run, it is given 2 parameters; `node` and `result`. A `node` is the specific node being visited, and a `result` is the Result of the PostCSS transformation, which you can learn more about at [api.postcss.org](http://api.postcss.org/Result.html).
+
+You can read [VISITORS.md] to learn more about the nodes you can visit.
 
 #### Result
 
