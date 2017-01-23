@@ -1,0 +1,66 @@
+{
+  "name": "postcss-visitor",
+  "version": "1.0.0",
+  "description": "Transform CSS with visitor-based plugins",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/postcss-visitor",
+  "homepage": "https://github.com/jonathantneal/postcss-visitor#readme",
+  "bugs": "https://github.com/jonathantneal/postcss-visitor/issues",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib"
+  ],
+  "scripts": {
+    "lint": "npm run lint:ec && npm run lint:js",
+    "lint:ec": "echint",
+    "lint:js": "eslint *.js lib/*.js --cache --ignore-pattern .gitignore",
+    "pre-commit": "echo 'Running pre-commit checks...' && exit 0",
+    "prepublish": "npm test",
+    "tape": "postcss-tape",
+    "test": "npm run lint && npm run tape"
+  },
+  "engines": {
+    "node": ">=6.5.0"
+  },
+  "dependencies": {
+    "postcss": "^5.2.9",
+    "postcss-selector-parser": "^2.2.2",
+    "postcss-values-parser": "^1.0.3"
+  },
+  "devDependencies": {
+    "echint": "^2.1.1",
+    "echint-config-dev": "1.0.0",
+    "eslint": "^3.13.1",
+    "eslint-config-dev": "1.0.0",
+    "postcss-tape": "^1.3.0",
+    "pre-commit": "^1.2.2"
+  },
+  "echint": {
+    "extends": "dev"
+  },
+  "eslintConfig": {
+    "extends": "dev",
+    "rules": {
+      "no-nested-ternary": [
+        0
+      ]
+    }
+  },
+  "pre-commit": [
+    "pre-commit",
+    "test"
+  ],
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "visitor",
+    "pattern",
+    "babel",
+    "single",
+    "loop",
+    "object"
+  ]
+}

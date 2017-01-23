@@ -1,0 +1,5 @@
+@media screen {
+	* ~ #id.class[attribute^="value"]:matches(anytag, anothertag):not(nottag) {
+		another-property: anotherword @anotheratword calc(3 * 4em), "another string";
+	}
+}
