@@ -106,7 +106,7 @@ You can read [VISITORS.md] to learn more about the nodes you can visit.
 
 ```js
 {
-	decl: (node, result) {
+	decl: (node, result) => {
 		// do something with a declaration
 	}
 }
